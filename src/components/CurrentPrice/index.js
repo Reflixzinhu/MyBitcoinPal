@@ -7,7 +7,7 @@ const CurrentPrice = () => {
   return (
     <View style={styles.headerPrice}>
       <Text style={styles.currentPrice}>$ 54423.355</Text>
-      <Text style={styles.textPrice}>Ultima Cotação</Text>
+      <Text style={styles.textPrice}>Última Cotação</Text>
     </View>
   );
 };
