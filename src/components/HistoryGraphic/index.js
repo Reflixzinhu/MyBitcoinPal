@@ -1,10 +1,47 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
+import { LineChart } from 'react-native-chart-kit';
 
 import styles from './styles';
 
-const HistoryGraphic = () => {
-  return <View style={styles.contentGraphics}></View>;
+const HistoryGraphic = (props) => {
+  return (
+    <View>
+      <LineChart
+        data={{
+          datasets: [
+            {
+              data: props.infoDataGraphic,
+            },
+          ],
+        }}
+        width={Dimensions.get('window').width - 20} // from react-native
+        height={220}
+        yAxisLabel="$"
+        yAxisSuffix="k"
+        withVerticalLines={false}
+        yLabelsOffset={1}
+        withVerticalLabels={false}
+        chartConfig={{
+          backgroundColor: '#000000',
+          backgroundGradientFrom: '#232323',
+          backgroundGradientTo: '#3F3F3F',
+          decimalPlaces: 0, // optional, defaults to 2dp
+          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          propsForDots: {
+            r: '1',
+            strokeWidth: '1',
+            stroke: '#f50d41',
+          },
+        }}
+        bezier
+        style={{
+          borderRadius: 16,
+        }}
+      />
+    </View>
+  );
 };
 
 export default HistoryGraphic;
